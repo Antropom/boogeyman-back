@@ -16,22 +16,22 @@ CREATE SCHEMA IF NOT EXISTS `best_boogeyman` ;
 USE `best_boogeyman` ;
 
 -- -----------------------------------------------------
--- Table `best_boogeyman`.`boogeyman`
+-- Table `best_boogeyman`.`Boogeyman`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `best_boogeyman`.`boogeyman` (
+CREATE TABLE IF NOT EXISTS `best_boogeyman`.`Boogeyman` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `avatar` VARCHAR(255) NOT NULL,
   `bio` VARCHAR(45) NULL,
-  `votes` INT NOT NULL,
+  `votes` INT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `best_boogeyman`.`user`
+-- Table `best_boogeyman`.`User`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `best_boogeyman`.`user` (
+CREATE TABLE IF NOT EXISTS `best_boogeyman`.`User` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
@@ -41,9 +41,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `best_boogeyman`.`boogeyman_has_user`
+-- Table `best_boogeyman`.`Boogeyman_has_user`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `best_boogeyman`.`boogeyman_has_user` (
+CREATE TABLE IF NOT EXISTS `best_boogeyman`.`Boogeyman_has_user` (
   `boogeyman_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   `vote` INT NOT NULL,
@@ -52,12 +52,12 @@ CREATE TABLE IF NOT EXISTS `best_boogeyman`.`boogeyman_has_user` (
   INDEX `fk_boogeyman_has_user_boogeyman_idx` (`boogeyman_id` ASC),
   CONSTRAINT `fk_boogeyman_has_user_boogeyman`
     FOREIGN KEY (`boogeyman_id`)
-    REFERENCES `best_boogeyman`.`boogeyman` (`id`)
+    REFERENCES `best_boogeyman`.`Boogeyman` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_boogeyman_has_user_user1`
     FOREIGN KEY (`user_id`)
-    REFERENCES `best_boogeyman`.`user` (`id`)
+    REFERENCES `best_boogeyman`.`User` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
