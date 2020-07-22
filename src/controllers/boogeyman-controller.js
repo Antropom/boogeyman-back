@@ -1,10 +1,10 @@
 // import model
-const TableModel = require('../models/table-model.sample');
+const BoogeymanModel = require('../models/boogeyman-model');
 
-class TableController {
-  static MethodSample(req, res) {
+class BoogeymanController {
+  static getAll(req, res) {
     try {
-      TableModel.MethodSample((error, results) => {
+      BoogeymanModel.getAll((error, results) => {
         if (!results.length) {
           res.status(404).json({
             status: 'error',
@@ -27,4 +27,4 @@ class TableController {
   // describe all method you want here
 }
 
-module.exports = TableController;
+module.exports = BoogeymanController;
