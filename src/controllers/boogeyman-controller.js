@@ -77,7 +77,7 @@ class BoogeymanController {
   static edit(req, res) {
     const { id } = req.params;
     try {
-      if (!req.body.name || !req.body.avatar || !req.body.bio || req.body.votes) {
+      if (req.body.name || req.body.avatar || req.body.bio || req.body.votes) {
         BoogeymanModel.getOne(id, (_, results) => {
           if (results.length === 0) {
             res.status(422).json({
