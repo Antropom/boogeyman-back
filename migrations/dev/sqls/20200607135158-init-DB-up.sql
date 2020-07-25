@@ -21,7 +21,7 @@ USE `best_boogeyman` ;
 CREATE TABLE IF NOT EXISTS `best_boogeyman`.`Boogeyman` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
-  `avatar` VARCHAR(255) NOT NULL,
+  `avatar` VARCHAR(1024) NOT NULL,
   `bio` MEDIUMTEXT NULL,
   `votes` INT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
